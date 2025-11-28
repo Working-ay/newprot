@@ -1,7 +1,9 @@
+
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Activity, Server, Users, Clock, Shield, LogOut, MessageSquare, Newspaper, Plus, Trash2, Edit, Save, X, LayoutDashboard, CheckCircle, AlertCircle } from 'lucide-react';
+import { Activity, Server, Users, Clock, Shield, LogOut, MessageSquare, Newspaper, Plus, Trash2, Edit, Save, X, LayoutDashboard, CheckCircle, AlertCircle, Info } from 'lucide-react';
 import { BlogPost, BlogCategory } from '../types';
+import { INITIAL_BLOG_POSTS } from '../constants';
 
 interface Ticket {
   id: number;
@@ -53,21 +55,10 @@ const AdminDashboard: React.FC = () => {
     if (savedPosts.length > 0) {
        setBlogPosts(savedPosts);
     } else {
-      // Fallback to defaults if local storage is empty
-      const defaultPosts = [
-          {
-            id: 1,
-            title: "Welcome to KSCloud",
-            image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop",
-            content: "<p>Welcome to our new blog system!</p>",
-            date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
-            author: "System",
-            role: "Admin",
-            tag: "General" as BlogCategory
-          }
-      ];
-      setBlogPosts(defaultPosts);
-      localStorage.setItem('ks_blog_posts', JSON.stringify(defaultPosts));
+      // Fallback to hardcoded constants if local storage is empty
+      setBlogPosts(INITIAL_BLOG_POSTS);
+      // Initialize local storage with these defaults so edits work locally
+      localStorage.setItem('ks_blog_posts', JSON.stringify(INITIAL_BLOG_POSTS));
     }
 
     // Simulate Live Data
@@ -188,6 +179,18 @@ const AdminDashboard: React.FC = () => {
        {/* Main Content */}
        <main className="flex-1 pt-24 pb-12 px-4 sm:px-8 overflow-y-auto h-screen">
           
+          {/* Simulation Warning Banner */}
+          <div className="mb-6 bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-4 flex items-start gap-3">
+             <Info className="w-5 h-5 text-yellow-500 mt-0.5 flex-shrink-0" />
+             <div>
+                <h3 className="text-yellow-500 font-bold text-sm">Simulation Mode Active</h3>
+                <p className="text-yellow-200/80 text-xs mt-1">
+                   You are running in a frontend-only environment. Changes made here (Tickets, Blog Posts) are saved to your <strong>Local Browser Storage</strong> only. 
+                   They will <strong>not</strong> appear on other devices or for other users. To make changes live for everyone, you must update the application source code.
+                </p>
+             </div>
+          </div>
+
           {/* Mobile Header & Tab Switcher (visible only on small screens) */}
           <div className="md:hidden mb-8 flex flex-col gap-4">
              <div className="flex gap-2 bg-white/5 p-1 rounded-xl">
