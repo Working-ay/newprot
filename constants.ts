@@ -1,6 +1,6 @@
 
 import { Shield, Zap, Clock, Server, Headset, Lock, LucideIcon, Star } from "lucide-react";
-import { Feature, PlanType, PricingPlan, ExtendedTeamMember, Location } from "./types";
+import { Feature, PlanType, PricingPlan, ExtendedTeamMember, Location, BlogPost, BlogCategory } from "./types";
 
 export const APP_NAME = "KSCloud Hosting";
 export const LOGO_URL = "https://i.postimg.cc/9FVg7PNM/ksclou.webp";
@@ -321,5 +321,35 @@ export const TESTIMONIALS = [
     role: "Minecraft Server Owner",
     content: "Switched from a bigger host and the difference is night and day. Zero lag on my SMP, chunks load instantly, and the support team is legendary.",
     rating: 5
+  }
+];
+
+// Single Source of Truth for Blog Posts to ensure consistency across all devices
+export const INITIAL_BLOG_POSTS: BlogPost[] = [
+  {
+    id: 1,
+    title: "🇺🇸 AMERICAN NODE ARRIVAL!",
+    image: "https://images.unsplash.com/photo-1508433957232-3107f5fd5995?q=80&w=2086&auto=format&fit=crop",
+    content: `<p class="mb-4 font-bold text-lg text-white">⭐ Greetings @everyone !</p>
+    <p class="mb-4">We’re thrilled to announce that our <strong class="text-white">American location (Boston, NA)</strong> is officially live! This upgrade is part of our ongoing effort to deliver better performance, lower latency and a smoother hosting experience for all our users worldwide.</p>
+    <p class="mb-4">As part of this expansion we’ll be closing our Indian node and focusing on strengthening our global infrastructure. All servers currently hosted on the Indian node will be transferred to our new American node (Boston, NA) to ensure improved stability and connection speeds.</p>
+    <p class="mb-4">We also want to thank our amazing community, you voted for the American location and we listened + those who are interested in American Node so please open a ticket on our <a href="${LINKS.billing}" target="_blank" rel="noreferrer" class="text-blue-400 hover:underline">Billing Panel</a>.</p>
+    <p class="italic text-zinc-400 border-l-4 border-white/20 pl-4 mt-6">⭐ Happy hosting y'all and thank you for being part of <a href="${LINKS.billing}" target="_blank" rel="noreferrer" class="text-white hover:underline">KSCloud Hosting Services.</a></p>`,
+    date: "Oct 27, 2025",
+    author: "AyrixMC",
+    role: "COO / Director",
+    tag: "Announcement"
+  },
+  {
+    id: 2,
+    title: "Welcome to KSCloud Hosting",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop",
+    content: `<p class="mb-4">Hello everyone! I am Frontman, Founder of KSCloud Hosting.</p>
+    <p class="mb-4">We founded KSCloud with a simple mission: to provide enterprise-grade hosting at prices that don't break the bank. We were tired of seeing hosts charge premium rates for outdated hardware.</p>
+    <p>With the help of AyrixMC and our amazing staff team, we have built a platform powered by <strong>AMD EPYC</strong> processors and <strong>NVMe SSDs</strong>. We are just getting started. Stay tuned for more updates!</p>`,
+    date: "Oct 25, 2025",
+    author: "Frontman",
+    role: "Founder",
+    tag: "General"
   }
 ];
